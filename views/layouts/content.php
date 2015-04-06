@@ -1,19 +1,34 @@
+<?php
+use yii\helpers\Inflector;
+use yii\widgets\Breadcrumbs;
+use adipriyantobpn\adminlte\widgets\Alert;
+
+/* @var $this \yii\web\View */
+/* @var $content string */
+/* @var $adminlteDirAsset string */
+?>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Page Header
-            <small>Optional description</small>
+            <?= isset($this->title)
+                ? $this->title
+                : Inflector::camel2words(Inflector::id2camel($this->context->module->id))
+            ?>
+            <?= isset($this->params['subtitle'])
+                ? '<small>' . $this->params['subtitle'] . '</small>'
+                : ''
+            ?>
         </h1>
-        <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-            <li class="active">Here</li>
-        </ol>
+        <?= Breadcrumbs::widget([
+            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+        ]) ?>
     </section>
 
     <!-- Main content -->
     <section class="content">
-
+        <?= Alert::widget() ?>
+        <?= $content ?>
         <!-- Your Page Content Here -->
 
     </section><!-- /.content -->
