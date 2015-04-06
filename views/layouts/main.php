@@ -4,12 +4,17 @@ use adipriyantobpn\adminlte\assets\AdminlteAsset;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
+/* @var $skin string */
+/* @var $layout string */
 
 //-- register assets
 AdminlteAsset::register($this);
 //-- get asset URL
 $adminlteAsset = new AdminlteAsset();
 $adminlteDirAsset = Yii::$app->assetManager->getPublishedUrl($adminlteAsset->sourcePath);
+//-- get adminlte skin & layout
+$skin = (isset($this->params['skin'])) ? $this->params['skin'] : 'skin-blue';
+$layout = (isset($this->params['layout'])) ? $this->params['layout'] : '';
 ?>
 <?php $this->beginPage(); ?>
 <!DOCTYPE html>
@@ -41,7 +46,7 @@ desired effect
 |---------------------------------------------------------|
 
 -->
-<body class="skin-blue">
+<body class="<?= $skin ?> <?= $layout ?>">
 <?= $this->beginBody() ?>
 <div class="wrapper">
 
