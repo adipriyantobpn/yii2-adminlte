@@ -51,14 +51,26 @@ desired effect
 <div class="wrapper">
 
     <!-- Main Header -->
-    <?= $this->render('header.php', [
-        'adminlteDirAsset' => $adminlteDirAsset,
-    ]) ?>
+    <?php
+    if(strpos($layout, 'layout-top-nav') === false) {
+        echo $this->render('header.php', [
+            'adminlteDirAsset' => $adminlteDirAsset,
+        ]);
+    } else {
+        echo $this->render('header-top-nav.php', [
+            'adminlteDirAsset' => $adminlteDirAsset,
+        ]);
+    }
+    ?>
 
     <!-- Left side column. contains the logo and sidebar -->
-    <?= $this->render('left.php', [
-        'adminlteDirAsset' => $adminlteDirAsset,
-    ]) ?>
+    <?php
+    if(strpos($layout, 'layout-top-nav') === false) {
+        echo $this->render('left.php', [
+            'adminlteDirAsset' => $adminlteDirAsset,
+        ]);
+    }
+    ?>
 
     <!-- Content Wrapper. Contains page content -->
     <?= $this->render('content.php', [
