@@ -1,3 +1,11 @@
+<?php
+use yii\widgets\Menu;
+use yii\helpers\Html;
+
+/* @var $this \yii\web\View */
+/* @var $content string */
+/* @var $adminlteDirAsset string */
+?>
 <aside class="main-sidebar">
 
     <!-- sidebar: style can be found in sidebar.less -->
@@ -6,7 +14,7 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
+                <img src="<?= $adminlteDirAsset ?>/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
             </div>
             <div class="pull-left info">
                 <p>Alexander Pierce</p>
@@ -27,19 +35,97 @@
         <!-- /.search form -->
 
         <!-- Sidebar Menu -->
-        <ul class="sidebar-menu">
-            <li class="header">HEADER</li>
-            <!-- Optionally, you can add icons to the links -->
-            <li class="active"><a href="#"><span>Link</span></a><</li>
-            <li><a href="#"><span>Another Link</span></a></li>
-            <li class="treeview">
-                <a href="#"><span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>
-                <ul class="treeview-menu">
-                    <li><a href="#">Link in level 2</a></li>
-                    <li><a href="#">Link in level 2</a></li>
-                </ul>
-            </li>
-        </ul><!-- /.sidebar-menu -->
+        <?= Menu::widget([
+            'encodeLabels' => false,
+            'options' => ['class' => 'sidebar-menu'],
+            'submenuTemplate' => "\n<ul class='treeview-menu'>\n{items}\n</ul>\n",
+            'items' => [
+                [
+                    'label' => Html::tag('li', 'HEADER', ['class'=>'header']),
+                ],
+                [
+                    'label' => '<span>Another Link</span>',
+                    'url' => '#',
+                    'options' => ['class'=>'active']
+                ],
+                [
+                    'label' => '<span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i>',
+                    'url' => '#',
+                    'options' => ['class'=>'treeview'],
+                    'items' => [
+                        [
+                            'label' => '<span>Another Link</span>',
+                            'url' => '#',
+                        ],
+                        [
+                            'label' => '<span>Another Link</span>',
+                            'url' => '#',
+                        ],
+                        [
+                            'label' => '<span>Multilevel 1</span> <i class="fa fa-angle-left pull-right"></i>',
+                            'url' => '#',
+                            'items' => [
+                                [
+                                    'label' => '<span>Another Link</span>',
+                                    'url' => '#',
+                                    'options' => ['class'=>'active']
+                                ],
+                                [
+                                    'label' => '<span>Another Link</span>',
+                                    'url' => '#',
+                                ],
+                                [
+                                    'label' => '<span>Multilevel 2</span> <i class="fa fa-angle-left pull-right"></i>',
+                                    'url' => '#',
+                                    'options' => ['class'=>'treeview'],
+                                    'items' => [
+                                        [
+                                            'label' => '<span>Another Link</span>',
+                                            'url' => '#',
+                                        ],
+                                        [
+                                            'label' => '<span>Another Link</span>',
+                                            'url' => '#',
+                                        ],
+                                        [
+                                            'label' => '<span>Multilevel 3</span> <i class="fa fa-angle-left pull-right"></i>',
+                                            'url' => '#',
+                                            'items' => [
+                                                [
+                                                    'label' => '<span>Another Link</span>',
+                                                    'url' => '#',
+                                                    'options' => ['class'=>'active']
+                                                ],
+                                                [
+                                                    'label' => '<span>Another Link</span>',
+                                                    'url' => '#',
+                                                ],
+                                                [
+                                                    'label' => '<span>Multilevel 4</span> <i class="fa fa-angle-left pull-right"></i>',
+                                                    'url' => '#',
+                                                    'options' => ['class'=>'treeview'],
+                                                    'items' => [
+                                                        [
+                                                            'label' => '<span>Another Link</span>',
+                                                            'url' => '#',
+                                                        ],
+                                                        [
+                                                            'label' => '<span>Another Link</span>',
+                                                            'url' => '#',
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ]); ?>
+        <!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->
 </aside>
