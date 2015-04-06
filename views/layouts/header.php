@@ -1,7 +1,14 @@
+<?php
+use yii\helpers\Html;
+
+/* @var $this \yii\web\View */
+/* @var $content string */
+/* @var $adminlteDirAsset string */
+?>
 <header class="main-header">
 
     <!-- Logo -->
-    <a href="index2.html" class="logo"><b>Admin</b>LTE</a>
+    <?= Html::a(Yii::$app->name, Yii::$app->homeUrl, ['class' => 'logo']) ?>
 
     <!-- Header Navbar -->
     <nav class="navbar navbar-static-top" role="navigation">
@@ -28,7 +35,7 @@
                                     <a href="#">
                                         <div class="pull-left">
                                             <!-- User Image -->
-                                            <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image"/>
+                                            <img src="<?= $adminlteDirAsset ?>/img/user2-160x160.jpg" class="img-circle" alt="User Image"/>
                                         </div>
                                         <!-- Message title and timestamp -->
                                         <h4>
@@ -107,14 +114,14 @@
                     <!-- Menu Toggle Button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <!-- The user image in the navbar-->
-                        <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image"/>
+                        <img src="<?= $adminlteDirAsset ?>/img/user2-160x160.jpg" class="user-image" alt="User Image"/>
                         <!-- hidden-xs hides the username on small devices so only the image appears. -->
                         <span class="hidden-xs">Alexander Pierce</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- The user image in the menu -->
                         <li class="user-header">
-                            <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
+                            <img src="<?= $adminlteDirAsset ?>/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
                             <p>
                                 Alexander Pierce - Web Developer
                                 <small>Member since Nov. 2012</small>
@@ -138,7 +145,11 @@
                                 <a href="#" class="btn btn-default btn-flat">Profile</a>
                             </div>
                             <div class="pull-right">
-                                <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                <?= Html::a(
+                                    'Sign out',
+                                    ['/site/logout'],
+                                    ['data-method' => 'post', 'class' => 'btn btn-default btn-flat']
+                                ) ?>
                             </div>
                         </li>
                     </ul>
