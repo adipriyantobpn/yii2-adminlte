@@ -9,4 +9,8 @@ class RespondjsAsset extends AssetBundle
     public $js = [
         'respond.min.js',
     ];
+    public $jsOptions = [
+        'condition' => 'lte IE9',
+        'position' => \yii\web\View::POS_HEAD,
+    ];
 }

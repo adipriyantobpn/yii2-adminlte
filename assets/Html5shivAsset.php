@@ -10,4 +10,8 @@ class Html5shivAsset extends AssetBundle
         'html5shiv-printshiv.min.js',
         'html5shiv.min.js',
     ];
+    public $jsOptions = [
+        'condition' => 'lte IE9',
+        'position' => \yii\web\View::POS_HEAD,
+    ];
 }
