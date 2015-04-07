@@ -8,7 +8,10 @@ use yii\helpers\Html;
 <header class="main-header">
 
     <!-- Logo -->
-    <?= Html::a(Yii::$app->name, Yii::$app->homeUrl, ['class' => 'logo']) ?>
+    <?= Html::a(Yii::$app->name, Yii::$app->homeUrl, [
+        'class' => 'logo',
+        'style' => 'white-space: nowrap; overflow: hidden; text-overflow: ellipsis;' //-- wrap long text
+    ]) ?>
 
     <!-- Header Navbar -->
     <nav class="navbar navbar-static-top" role="navigation">
