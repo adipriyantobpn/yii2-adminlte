@@ -10,7 +10,7 @@ use yii\helpers\Html;
 <header class="main-header">
     <?php
     NavBar::begin([
-        'brandLabel' => '<b>Admin</b>LTE',
+        'brandLabel' => Yii::$app->name,
         'innerContainerOptions' => [
             'class' => 'container-fluid',
         ],
