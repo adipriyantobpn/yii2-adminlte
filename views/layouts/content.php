@@ -2,6 +2,7 @@
 use yii\helpers\Inflector;
 use yii\widgets\Breadcrumbs;
 use adipriyantobpn\adminlte\widgets\Alert;
+use yii\helpers\Html;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
@@ -12,7 +13,7 @@ use adipriyantobpn\adminlte\widgets\Alert;
     <section class="content-header">
         <h1>
             <?= isset($this->title)
-                ? $this->title
+                ? Html::encode($this->title)
                 : Inflector::camel2words(Inflector::id2camel($this->context->module->id))
             ?>
             <?= isset($this->params['subtitle'])
